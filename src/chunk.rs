@@ -7,7 +7,7 @@ use crate::chunk_type::ChunkType;
 use crate::Error;
 use crate::Result;
 
-const Crc32: Crc<u32> = Crc::<u32>::new(&CRC_32_ISO_HDLC);
+const CRC32: Crc<u32> = Crc::<u32>::new(&CRC_32_ISO_HDLC);
 pub struct Chunk {
     length: u32,
     chunk_type: ChunkType,
@@ -29,7 +29,7 @@ impl Chunk {
             length: data.len() as u32,
             chunk_type,
             data: data,
-            crc: Crc32.checksum(&total_bytes),
+            crc: CRC32.checksum(&total_bytes),
         }
     }
     pub fn length(&self) -> u32 {

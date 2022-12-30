@@ -1,17 +1,11 @@
 use anyhow::{self, Ok};
-use args::{Cli, Commands};
-use clap::{Command, Parser};
+use clap::Parser;
+use pngme::{
+    args::{Cli, Commands},
+    commands,
+};
 
-mod args;
-mod chunk;
-mod chunk_type;
-mod commands;
-mod png;
-
-pub type Error = anyhow::Error;
-pub type Result<T> = std::result::Result<T, Error>;
-
-fn main() -> Result<()> {
+fn main() -> pngme::Result<()> {
     let cli = Cli::parse();
     match cli.commands {
         Commands::Encode(encode_args) => commands::encode(encode_args)?,

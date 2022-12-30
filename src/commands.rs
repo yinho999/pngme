@@ -1,12 +1,11 @@
 use std::convert::TryFrom;
 use std::fs;
-use std::str::FromStr;
 
 use anyhow::bail;
 
 use crate::args::{DecodeArgs, EncodeArgs, PrintArgs, RemoveArgs};
-use crate::png::{Chunk, ChunkType, Png};
-use crate::{Error, Result};
+use crate::png::{Chunk, Png};
+use crate::Result;
 
 /// Encodes a message into a PNG file and saves the result
 pub fn encode(args: EncodeArgs) -> Result<()> {
@@ -68,7 +67,7 @@ pub fn remove(args: RemoveArgs) -> Result<()> {
 pub fn print_chunks(args: PrintArgs) -> Result<()> {
     let PrintArgs { file_path } = args;
     let png_file = fs::read(file_path.clone())?;
-    let mut png = Png::try_from(png_file.as_slice())?;
+    let png = Png::try_from(png_file.as_slice())?;
     let mut count = 0;
 
     // Print all message in png

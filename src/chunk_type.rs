@@ -5,7 +5,7 @@ use std::{char, fmt::Display, str::FromStr};
 
 #[derive(Debug, PartialEq, Eq, Clone)]
 pub struct ChunkType(u8, u8, u8, u8);
-
+#[allow(dead_code)]
 impl ChunkType {
     pub fn bytes(&self) -> [u8; 4] {
         [self.0, self.1, self.2, self.3]

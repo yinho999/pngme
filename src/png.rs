@@ -9,6 +9,7 @@ pub struct Png {
     chunks: Vec<Chunk>,
 }
 
+#[allow(dead_code)]
 impl Png {
     pub const STANDARD_HEADER: [u8; 8] = [
         137 as u8, 80 as u8, 78 as u8, 71 as u8, 13 as u8, 10 as u8, 26 as u8, 10 as u8,
